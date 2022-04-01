@@ -1,0 +1,5 @@
+all-images
+processed
+*.tar.gz
+train
+test
