@@ -1,4 +1,4 @@
-# Repository for [Conditional Image Generation by Conditioning Variational Auto-Encoders](https://openreview.net/forum?id=7MV6uLzOChW), to be presented at ICLR 2022
+# Repository for [Conditional Image Generation by Conditioning Variational Auto-Encoders](https://openreview.net/forum?id=7MV6uLzOChW), ICLR 2022
 
 <p float="left">
 <img src="ipa-t=0.85.jpg" height="200px"/>
@@ -40,3 +40,15 @@ NO_MPI=1 python train.py --hps=ffhq256 --lr=0.00015 --n_batch=1 --pretrained_loa
 
 ## Pretrained IPA models
 We provide a trained IPA model for each dataset [here](https://drive.google.com/drive/folders/1h899kAZbypGyRf1djWAiWytU0YHz7190?usp=sharing). These are trained for the time and number of iterations reported in Table 3 of [the paper](https://openreview.net/forum?id=7MV6uLzOChW).
+
+## Citation
+```
+@inproceedings{
+harvey2022conditional,
+title={Conditional Image Generation by Conditioning Variational Auto-Encoders},
+author={William Harvey and Saeid Naderiparizi and Frank Wood},
+booktitle={International Conference on Learning Representations},
+year={2022},
+url={https://openreview.net/forum?id=7MV6uLzOChW}
+}
+```
