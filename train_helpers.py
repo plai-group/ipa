@@ -196,7 +196,7 @@ def make_part_encoder_initialisation(H, state_dict, init_cond_from_uncond):
             continue
 
 
-def load_vaes(H, logprint, init_cond_from_uncond=False, ckpt_dir=None):
+def load_vaes(H, logprint, init_cond_from_uncond=False, ckpt_dir=None, ema_only=False):
     print('loading vaes', init_cond_from_uncond)
     if ckpt_dir is not None:
         load_dir = ckpt_dir
@@ -206,7 +206,7 @@ def load_vaes(H, logprint, init_cond_from_uncond=False, ckpt_dir=None):
         load_dir = H.ckpt_load_dir
     VAE_type = ConditionalVAE if H.conditional else VAE
     vae = VAE_type(H)
-    if load_dir is not None:
+    if load_dir is not None and not ema_only:
         if init_cond_from_uncond:
             # use pretrained model with ema
             vae_path = os.path.join(load_dir, 'model-ema.th')
@@ -219,7 +219,6 @@ def load_vaes(H, logprint, init_cond_from_uncond=False, ckpt_dir=None):
     ema_vae = VAE_type(H)
     if load_dir is not None:
         ema_path = os.path.join(load_dir, 'model-ema.th')
-        print(ema_path)
         logprint(f'Restoring ema vae from {ema_path}')
         restore_params(H, ema_vae, ema_path, map_cpu=True, local_rank=H.local_rank, mpi_size=H.mpi_size,
                        init_cond_from_uncond=init_cond_from_uncond)
